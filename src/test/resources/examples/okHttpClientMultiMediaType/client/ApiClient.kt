@@ -18,10 +18,10 @@ import kotlin.collections.Map
 import kotlin.jvm.Throws
 
 @Suppress("unused")
-class ExamplePath1Client(
+public class ExamplePath1Client(
     private val objectMapper: ObjectMapper,
     private val baseUrl: String,
-    private val client: OkHttpClient
+    private val client: OkHttpClient,
 ) {
     /**
      * GET example path 1
@@ -31,11 +31,11 @@ class ExamplePath1Client(
      * @param acceptHeader
      */
     @Throws(ApiException::class)
-    fun getExamplePath1(
+    public fun getExamplePath1(
         explodeListQueryParam: List<String>? = null,
         queryParam2: Int? = null,
         acceptHeader: String = "application/vnd.custom.media+xml",
-        additionalHeaders: Map<String, String> = emptyMap()
+        additionalHeaders: Map<String, String> = emptyMap(),
     ): ApiResponse<QueryResult> {
         val httpUrl: HttpUrl = "$baseUrl/example-path-1"
             .toHttpUrl()
@@ -45,7 +45,7 @@ class ExamplePath1Client(
             .build()
 
         val headerBuilder = Headers.Builder()
-            .header("Accept", acceptHeader)
+            .`header`("Accept", acceptHeader)
         additionalHeaders.forEach { headerBuilder.header(it.key, it.value) }
         val httpHeaders: Headers = headerBuilder.build()
 
@@ -60,10 +60,10 @@ class ExamplePath1Client(
 }
 
 @Suppress("unused")
-class ExamplePath2Client(
+public class ExamplePath2Client(
     private val objectMapper: ObjectMapper,
     private val baseUrl: String,
-    private val client: OkHttpClient
+    private val client: OkHttpClient,
 ) {
     /**
      * GET example path 1
@@ -73,11 +73,11 @@ class ExamplePath2Client(
      * @param accept the content type accepted by the client
      */
     @Throws(ApiException::class)
-    fun getExamplePath2(
+    public fun getExamplePath2(
         explodeListQueryParam: List<String>? = null,
         queryParam2: Int? = null,
         accept: ContentType? = null,
-        additionalHeaders: Map<String, String> = emptyMap()
+        additionalHeaders: Map<String, String> = emptyMap(),
     ): ApiResponse<QueryResult> {
         val httpUrl: HttpUrl = "$baseUrl/example-path-2"
             .toHttpUrl()
@@ -87,7 +87,7 @@ class ExamplePath2Client(
             .build()
 
         val headerBuilder = Headers.Builder()
-            .header("Accept", accept?.value)
+            .`header`("Accept", accept?.value)
         additionalHeaders.forEach { headerBuilder.header(it.key, it.value) }
         val httpHeaders: Headers = headerBuilder.build()
 
@@ -102,10 +102,10 @@ class ExamplePath2Client(
 }
 
 @Suppress("unused")
-class MultipleResponseSchemasClient(
+public class MultipleResponseSchemasClient(
     private val objectMapper: ObjectMapper,
     private val baseUrl: String,
-    private val client: OkHttpClient
+    private val client: OkHttpClient,
 ) {
     /**
      * GET with multiple response content schemas
@@ -113,10 +113,9 @@ class MultipleResponseSchemasClient(
      * @param accept the content type accepted by the client
      */
     @Throws(ApiException::class)
-    fun getMultipleResponseSchemas(
+    public fun getMultipleResponseSchemas(
         accept: ContentType? = null,
-        additionalHeaders: Map<String, String> =
-            emptyMap()
+        additionalHeaders: Map<String, String> = emptyMap()
     ): ApiResponse<JsonNode> {
         val httpUrl: HttpUrl = "$baseUrl/multiple-response-schemas"
             .toHttpUrl()
@@ -124,7 +123,7 @@ class MultipleResponseSchemasClient(
             .build()
 
         val headerBuilder = Headers.Builder()
-            .header("Accept", accept?.value)
+            .`header`("Accept", accept?.value)
         additionalHeaders.forEach { headerBuilder.header(it.key, it.value) }
         val httpHeaders: Headers = headerBuilder.build()
 

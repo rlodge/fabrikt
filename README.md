@@ -1,5 +1,12 @@
 # Fabrikt `/ˈfa-brikt/` - Kotlin code from OpenApi3 specifications
 
+Note: this is a fork of [cjbooms/fabrikt](https://github.com/cjbooms/fabrikt) to make a number of changes to (I hope) improve it.  If it works out for me, I'll be publishing builds to maven central under "com.electronicmuse:fabrikt".
+
+Changes in this fork:
+
+- update libraries
+- use a classifier for the shadow jar so that it's easy to use this as a library, not just from the command line.
+
 This library was built to take advantage of the complex modeling features available in OpenApi3. It generates Kotlin data classes with advanced support for features such as: 
  - Null Safety
  - Inlined schema definitions
