@@ -1,6 +1,3 @@
-import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
-import org.jetbrains.dokka.gradle.DokkaTask
-
 plugins {
     id("org.jetbrains.kotlin.jvm") version "1.7.20" // Apply the Kotlin JVM plugin to add support for Kotlin.
     id("com.github.johnrengelman.shadow") version "4.0.1"
@@ -20,8 +17,8 @@ val gitVersion: groovy.lang.Closure<*> by extra
 version = gitVersion.call()
 
 val projectUrl = "https://github.com/rlodge/fabrikt"
-val projectScmUrl = "scm:https://rlodge@github.com/cjbooms/fabrikt.git"
-val projectScmConUrl = "scm:https://rlodge@github.com/cjbooms/fabrikt.git"
+val projectScmUrl = "scm:https://rlodge@github.com/rlodge/fabrikt.git"
+val projectScmConUrl = "scm:https://rlodge@github.com/rlodge/fabrikt.git"
 val projectScmDevUrl = "scm:git://github.com/rlodge/fabrikt.git"
 val projectIssueUrl = "https://github.com/rlodge/fabrikt/issues"
 val projectName = "Fabrikt"
@@ -62,18 +59,6 @@ dependencies {
 }
 
 tasks {
-    val shadowJar by getting(ShadowJar::class) {
-        manifest {
-            attributes["Main-Class"] = "com.cjbooms.fabrikt.cli.CodeGen"
-            attributes["Implementation-Title"] = "fabrikt"
-            attributes["Implementation-Version"] = project.version
-            attributes["Built-JDK"] = System.getProperty("java.version")
-            attributes["Built-Gradle"] = gradle.gradleVersion
-        }
-        archiveBaseName.set(executableName)
-        archiveClassifier.set("shadow")
-    }
-
     create("sourcesJar", Jar::class) {
         archiveClassifier.set("sources")
         from(sourceSets.getByName("main").allSource)
@@ -85,13 +70,6 @@ tasks {
         archiveClassifier.set("javadoc")
         from(dokkaHtml)
         dependsOn(dokkaHtml)
-    }
-
-    create("printCodeGenUsage", JavaExec::class) {
-        dependsOn(shadowJar)
-        classpath = project.files("./build/libs/$executableName-$version.jar")
-        main = "com.cjbooms.fabrikt.cli.CodeGen"
-        args = listOf("--help")
     }
 
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
@@ -119,10 +97,13 @@ publishing {
 
     publications {
         create<MavenPublication>("fabrikt") {
-            artifact(tasks["jar"])
-            artifact(tasks["shadowJar"])
+
+            artifactId = "fabrikt"
+
             artifact(tasks["sourcesJar"])
             artifact(tasks["kotlinDocJar"])
+
+            from(components["java"])
 
             pom {
                 name.set(projectName)
