@@ -75,6 +75,9 @@ class SpringControllerGeneratorTest {
             setOf(ControllerCodeGenOptionType.AUTHENTICATION),
         ).generate().toSingleFile()
 
+        java.io.File("build/tmp/actual.kt").writeText(controllers)
+        java.io.File("build/tmp/expected.kt").writeText(expectedControllers)
+
         assertThat(controllers).isEqualTo(expectedControllers)
     }
 

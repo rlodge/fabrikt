@@ -39,7 +39,7 @@ public data class PersonWithDefaults(
     @param:JsonProperty("byte_type")
     @get:JsonProperty("byte_type")
     @get:NotNull
-    public val byteType: ByteArray = Base64.getDecoder().decode("U3dhZ2dlciByb2Nrcw==")
+    public val byteType: ByteArray = Base64.getDecoder().decode("U3dhZ2dlciByb2Nrcw=="),
 )
 
 public enum class PersonWithDefaultsEnumDefault(

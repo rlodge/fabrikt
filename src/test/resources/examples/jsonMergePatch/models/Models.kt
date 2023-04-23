@@ -1,98 +1,98 @@
 package examples.jsonMergePatch.models
 
-import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.`annotation`.JsonProperty
 import org.openapitools.jackson.nullable.JsonNullable
 import javax.validation.Valid
 import kotlin.String
 
-data class InnerMergePatch(
+public data class InnerMergePatch(
     @param:JsonProperty("p")
     @get:JsonProperty("p")
-    val p: JsonNullable<String> = JsonNullable.undefined()
+    public val p: JsonNullable<String> = JsonNullable.undefined(),
 )
 
-data class InnerNotMergePatch(
+public data class InnerNotMergePatch(
     @param:JsonProperty("p")
     @get:JsonProperty("p")
-    val p: String? = null
+    public val p: String? = null,
 )
 
-data class InnerOnlyMergePatchInline(
+public data class InnerOnlyMergePatchInline(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: InnerOnlyMergePatchInlineInner? = null
+    public val `inner`: InnerOnlyMergePatchInlineInner? = null,
 )
 
-data class InnerOnlyMergePatchInlineInner(
+public data class InnerOnlyMergePatchInlineInner(
     @param:JsonProperty("p")
     @get:JsonProperty("p")
-    val p: JsonNullable<String> = JsonNullable.undefined()
+    public val p: JsonNullable<String> = JsonNullable.undefined(),
 )
 
-data class InnerOnlyMergePatchRef(
+public data class InnerOnlyMergePatchRef(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: InnerMergePatch? = null
+    public val `inner`: InnerMergePatch? = null,
 )
 
-data class NestedMergePatchInline(
+public data class NestedMergePatchInline(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: JsonNullable<NestedMergePatchInlineInner> = JsonNullable.undefined()
+    public val `inner`: JsonNullable<NestedMergePatchInlineInner> = JsonNullable.undefined(),
 )
 
-data class NestedMergePatchInlineInner(
+public data class NestedMergePatchInlineInner(
     @param:JsonProperty("p")
     @get:JsonProperty("p")
-    val p: JsonNullable<String> = JsonNullable.undefined()
+    public val p: JsonNullable<String> = JsonNullable.undefined(),
 )
 
-data class NestedMergePatchRef(
+public data class NestedMergePatchRef(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: JsonNullable<InnerMergePatch> = JsonNullable.undefined()
+    public val `inner`: JsonNullable<InnerMergePatch> = JsonNullable.undefined(),
 )
 
-data class NoMergePatchInline(
+public data class NoMergePatchInline(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: NoMergePatchInlineInner? = null
+    public val `inner`: NoMergePatchInlineInner? = null,
 )
 
-data class NoMergePatchInlineInner(
+public data class NoMergePatchInlineInner(
     @param:JsonProperty("p")
     @get:JsonProperty("p")
-    val p: String? = null
+    public val p: String? = null,
 )
 
-data class NoMergePatchRef(
+public data class NoMergePatchRef(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: InnerNotMergePatch? = null
+    public val `inner`: InnerNotMergePatch? = null,
 )
 
-data class TopLevelLevelMergePatchInline(
+public data class TopLevelLevelMergePatchInline(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: JsonNullable<TopLevelLevelMergePatchInlineInner> = JsonNullable.undefined()
+    public val `inner`: JsonNullable<TopLevelLevelMergePatchInlineInner> = JsonNullable.undefined(),
 )
 
-data class TopLevelLevelMergePatchInlineInner(
+public data class TopLevelLevelMergePatchInlineInner(
     @param:JsonProperty("p")
     @get:JsonProperty("p")
-    val p: String? = null
+    public val p: String? = null,
 )
 
-data class TopLevelLevelMergePatchRef(
+public data class TopLevelLevelMergePatchRef(
     @param:JsonProperty("inner")
     @get:JsonProperty("inner")
     @get:Valid
-    val inner: JsonNullable<InnerNotMergePatch> = JsonNullable.undefined()
+    public val `inner`: JsonNullable<InnerNotMergePatch> = JsonNullable.undefined(),
 )
