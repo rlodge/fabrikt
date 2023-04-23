@@ -28,7 +28,7 @@ public data class AnotherObject(
     JsonSubTypes.Type(
         value = PolymorphicTypeTwo::class,
         name =
-        "PolymorphicTypeTwo"
+        "polymorphic_type_two"
     )
 )
 public sealed class PolymorphicSuperType(
@@ -74,5 +74,5 @@ public data class PolymorphicTypeTwo(
 ) : PolymorphicSuperType(firstName, lastName) {
     @get:JsonProperty("generation")
     @get:NotNull
-    public override val generation: String = "PolymorphicTypeTwo"
+    public override val generation: String = "polymorphic_type_two"
 }

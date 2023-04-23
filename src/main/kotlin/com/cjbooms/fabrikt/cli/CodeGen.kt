@@ -26,10 +26,13 @@ object CodeGen {
             codeGenArgs.targets,
             codeGenArgs.apiFragments.map { it.toFile().readText() },
             codeGenArgs.controllerOptions,
+            codeGenArgs.controllerTarget,
             codeGenArgs.modelOptions,
             codeGenArgs.clientOptions,
+            codeGenArgs.typeOverrides,
             codeGenArgs.srcPath,
-            codeGenArgs.resourcesPath
+            codeGenArgs.resourcesPath,
+            codeGenArgs.validationLibrary
         )
     }
 
@@ -40,12 +43,15 @@ object CodeGen {
         codeGenTypes: Set<CodeGenerationType>,
         apiFragments: List<String> = emptyList(),
         controllerOptions: Set<ControllerCodeGenOptionType>,
+        controllerTarget: ControllerCodeGenTargetType,
         modelOptions: Set<ModelCodeGenOptionType>,
         clientOptions: Set<ClientCodeGenOptionType>,
+        typeOverrides: Set<CodeGenTypeOverride>,
         srcPath: Path,
         resourcesPath: Path,
+        validationLibrary: ValidationLibrary
     ) {
-        MutableSettings.updateSettings(codeGenTypes, controllerOptions, modelOptions, clientOptions)
+        MutableSettings.updateSettings(codeGenTypes, controllerOptions, controllerTarget, modelOptions, clientOptions, typeOverrides, validationLibrary)
 
         val suppliedApi = pathToApi.toFile().readText()
         val baseDir = pathToApi.parent
